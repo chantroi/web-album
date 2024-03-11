@@ -1,8 +1,18 @@
 {% block template %}
-<template id="upload-form">
+<template id="upload-tpl">
     <form action="/s3/upload" method="POST" enctype="multipart/form-data">
         <input type="file" name="file" id="file">
         <input type="submit" value="Upload">
     </form>
+</template>
+<template id="list-tpl">
+    <ol id="order-list">
+    </ol>
+</template>
+<template id="item-tpl">
+    <li id="list-item">
+        <a id="item-link">
+        </a>
+    </li>
 </template>
 {% endblock %}
