@@ -18,7 +18,8 @@ def js():
 @app.route("/")
 async def home():
     return await render_template(
-        "index.html"
+        "index.html",
+        all_js_script=js()
         )
     
 @app.route("/s3/upload", methods=['POST'])
