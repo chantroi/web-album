@@ -1,11 +1,13 @@
 import boto3
+import os
 from botocore.exceptions import NoCredentialsError
 
+
 class S3Manager:
-    def __init__(self, access_key, secret_key, bucket_name):
-        self.access_key = access_key
-        self.secret_key = secret_key
-        self.bucket_name = bucket_name
+    def __init__(self):
+        access_key = os.getenv('ACCESS_KEY')
+        secret_key = os.getenv('SECRET_KEY')
+        self.bucket_name = "storage"
         self.s3_client = boto3.client('s3', aws_access_key_id=access_key, aws_secret_access_key=secret_key)
 
     def upload_file(self, file_path, object_name=None):
