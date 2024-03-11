@@ -16,6 +16,7 @@ class S3:
         try:
             self.s3.upload_fileobj(file_obj, self.bucket, object_name)
             print("Upload successful")
+            return object_name
         except FileNotFoundError:
             print("The file was not found")
         except NoCredentialsError:
@@ -25,17 +26,20 @@ class S3:
         try:
             self.s3.download_fileobj(self.bucket, object_name, file_obj)
             print("Download successful")
+            return file_obj
         except NoCredentialsError:
             print("Credentials not available")
 
-    def list_files(self):
+    def listdir(self):
         try:
             response = self.s3.list_objects_v2(Bucket=self.bucket)
+            results = list()
             if 'Contents' in response:
                 for obj in response['Contents']:
-                    print(obj['Key'])
+                    results.append(obj['Key'])
             else:
                 print("Bucket is empty")
+            return results
         except NoCredentialsError:
             print("Credentials not available")
 
