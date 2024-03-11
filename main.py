@@ -12,7 +12,7 @@ async def home():
         )
     
 @app.route("/s3/upload", methods=['POST'])
-async def upload_route(filename: str):
+async def upload_route():
     file = await request.files.get('file')
     data = await file.read()
     file_obj = BytesIO(data)
