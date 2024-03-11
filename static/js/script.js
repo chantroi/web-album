@@ -56,7 +56,7 @@ function handleClick(event) {
 }
 
 function closePopup(event) {
-    document.getElementById('popup').remove();
+    this.parentNode.remove();
 }
 
 function formSubmit(event) {
