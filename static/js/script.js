@@ -1,7 +1,6 @@
 const listTpl = document.getElementById('list-tpl').content;
 const itemTpl = document.getElementById('item-tpl').content;
 const popupItem = document.getElementById('popup-tpl').content;
-const itemLink = document.getElementById('item-link');
 
 function getFiles() {
     const This = document.getElementById('file-list');
@@ -18,9 +17,9 @@ function getFiles() {
                 const link = itemTag.querySelector('a');
                 link.textContent = item;
                 link.href = item;
-                This.appendChild(itemTag)
-            })
-        })
+                This.appendChild(itemTag);
+            });
+        });
 }
 
 function onPlay(event) {
@@ -33,7 +32,7 @@ function onPlay(event) {
       .then(response => response.json())
       .then(data => {
           playLink = data.result;
-      })
+      });
     
     if (name.endsWith('.mp4')) {
         const video = `<video href="${playLink}" controls></video>`;
