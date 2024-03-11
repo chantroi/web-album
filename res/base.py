@@ -44,7 +44,7 @@ class S3:
         except NoCredentialsError:
             print("Credentials not available")
 
-    def get_link(self, object_name, expiration=360000):
+    def get_link(self, object_name, expiration=None):
         try:
             url = self.s3.generate_presigned_url('get_object', Params={'Bucket': self.bucket, 'Key': object_name}, ExpiresIn=expiration)
             return url
