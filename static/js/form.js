@@ -1,7 +1,7 @@
 const uploadButton = document.querySelector('#upload-btn');
-const template = document.getElementById('upload-tpl').content.cloneNode(true);
 
 function handleClick(event) {
+    const template = document.getElementById('upload-tpl').content.cloneNode(true);
     document.body.appendChild(template);
 }
 
