@@ -7,7 +7,7 @@ s3 = S3()
 
 @app.route("/")
 async def home():
-    return render_template(
+    return await render_template(
         "index.html"
         )
     
