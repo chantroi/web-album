@@ -5,10 +5,11 @@
 {% block template %}
 <template id="upload-tpl">
     <div class="popup">
-        <form action="/s3/upload" method="POST" enctype="multipart/form-data" id="upload-form">
+        <form target="hidden" action="/s3/upload" method="POST" enctype="multipart/form-data" id="upload-form">
             <input type="file" name="file" id="file">
-            <input type="submit" value="Upload" onclick="formSubmit()">
+            <input type="submit" value="Upload" >
         </form>
+        <iframe name="hidden" style="display: none;"></iframe>
         <button onclick="closePopup()">Close</button>
     </div>
 </template>
