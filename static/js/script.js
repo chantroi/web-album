@@ -1,6 +1,7 @@
 const listTpl = document.getElementById('list-tpl').content;
 const itemTpl = document.getElementById('item-tpl').content;
 const popupItem = document.getElementById('popup-tpl').content;
+const uploadButton = document.querySelector('#upload-btn');
 
 function getFiles() {
     const This = document.getElementById('file-list');
@@ -48,3 +49,20 @@ function onPlay(event) {
    }
    document.body.appendChild(popup);
 }
+
+function handleClick(event) {
+    const template = document.getElementById('upload-tpl').content.cloneNode(true);
+    document.body.appendChild(template);
+}
+
+function closePopup(event) {
+    document.getElementById('popup').remove();
+}
+
+function formSubmit(event) {
+    event.preventDefault();
+    const form = document.getElementById('upload-form');
+    form.submit();
+}
+
+uploadButton.addEventListener('click', handleClick);
