@@ -30,7 +30,7 @@ async def download_route():
         file_obj
         )
     file_obj.name = filename
-    return send_file(
+    return await send_file(
         file_obj, 
         as_attachment=True
         )
