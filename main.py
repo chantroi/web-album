@@ -6,20 +6,10 @@ import os
 app = Quart(__name__)
 s3 = S3()
 
-def js():
-    scripts = list()
-    for jsf in os.listdir('static/js'):
-        if jsf != "script.js":
-            with open(f"static/js/{jsf}", 'r') as f:
-                scripts.append(f.read())
-    return "\n".join(scripts)
-                
-
 @app.route("/")
 async def home():
     return await render_template(
-        "index.html",
-        all_js_script=js()
+        "index.html"
         )
     
 @app.route("/s3/upload", methods=['POST'])
