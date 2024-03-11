@@ -15,7 +15,7 @@ function getFiles() {
                   <a id="item-link" href="${item}">${item}</a>
                 </div>
                 ```;
-                This.appendChild(itemTag);
+                This.insertAdjacentHTML('beforeend', itemTag);
             });
         });
 }
