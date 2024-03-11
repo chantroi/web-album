@@ -7,7 +7,9 @@ s3 = S3()
 
 @app.route("/")
 async def home():
-    return "OK"
+    return render_template(
+        "index.html"
+        )
     
 @app.route("/s3/upload/<filename>", methods=['POST'])
 async def upload_route(filename: str):
