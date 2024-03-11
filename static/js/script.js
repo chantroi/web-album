@@ -1,10 +1,6 @@
-const listTpl = document.getElementById('list-tpl').content;
-const itemTpl = document.getElementById('item-tpl').content;
-const popupItem = document.getElementById('popup-tpl').content;
 const uploadButton = document.querySelector('#upload-btn');
 
 function getFiles() {
-    const This = document.getElementById('file-list');
     fetch('/s3/list')
         .then(response => {
             if (!response.ok) {
@@ -14,10 +10,11 @@ function getFiles() {
         })
         .then(data => {
             data.result.forEach(item => {
-                const itemTag = itemTpl.cloneNode(true);
-                const link = itemTag.querySelector('a');
-                link.textContent = item;
-                link.href = item;
+                const itemTag = ```
+                <div id="list-item">
+                  <a id="item-link" href="${item}">${item}</a>
+                </div>
+                ```;
                 This.appendChild(itemTag);
             });
         });
@@ -26,9 +23,9 @@ function getFiles() {
 function onPlay(event) {
     event.preventDefault;
     const name = this.href;
-    const popup = popupItem.cloneNode(true).getElementById('popup-item');
     const imageExt = ['.jpeg', '.png', '.jpg'];
     let playLink;
+    let item;
     fetch(`/s3/get?q=${name}`)
       .then(response => response.json())
       .then(data => {
@@ -36,17 +33,19 @@ function onPlay(event) {
       });
     
     if (name.endsWith('.mp4')) {
-        const video = `<video href="${playLink}" controls></video>`;
-        popup.appendChild(video);
+        item = `<video href="${playLink}" controls></video>`;
     }
     if (imageExt.some(ext => name.endsWith(ext))) {
-        const image = `<image src="${playLink}"></image>`;
-        popup.appendChild(image);
+        item = `<image src="${playLink}"></image>`;
     }
    if (name.endsWith('.mp3')) {
-       const audio = `<audio src="${playLink}" controls></audio>`;
-       popup.appendChild(audio);
+       item = `<audio src="${playLink}" controls></audio>`;
    }
+   const popup = ```
+        <div id="popup">
+          ${item}
+        </div>
+    ```;
    document.body.appendChild(popup);
 }
 
