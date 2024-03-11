@@ -19,7 +19,7 @@ async def upload_route():
     file_obj.name = file.name
     return dict(
         status='OK', 
-        result=s3.upload(file_obj, filename)
+        result=s3.upload(file_obj, file.name)
         )
     
 @app.route("/s3/download")
