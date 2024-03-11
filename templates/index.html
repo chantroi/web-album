@@ -5,10 +5,13 @@
 
 {% block template %}
 <template id="upload-tpl">
-    <form action="/s3/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" id="file">
-        <input type="submit" value="Upload">
-    </form>
+    <div class="popup">
+        <form action="/s3/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="file">
+            <input type="submit" value="Upload">
+        </form>
+        <button onclick="closePopup()">Close</button>
+    </div>
 </template>
 
 <template id="list-tpl">
@@ -52,7 +55,7 @@
 </div>
 
 {% endblock %}
- 
-{% block script %} 
+
+{% block script %}
 {{ all_js_script }}
 {% endblock %}
