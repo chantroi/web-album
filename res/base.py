@@ -7,7 +7,7 @@ class S3:
     def __init__(self):
         access_key = os.getenv('ACCESS_KEY')
         secret_key = os.getenv('SECRET_KEY')
-        endpoint = "q3k0.sg.idrivee2-46.com"
+        endpoint = "https://q3k0.sg.idrivee2-46.com"
         self.bucket = "storage"
         self.s3 = boto3.client('s3', aws_access_key_id=access_key, aws_secret_access_key=secret_key, endpoint_url=endpoint)
 
