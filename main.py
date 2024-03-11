@@ -1,5 +1,5 @@
 from quart import Quart, request, render_template, send_file
-from res import S3
+from utils import S3
 from io import BytesIO
 import os
 
