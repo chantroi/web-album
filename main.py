@@ -11,11 +11,12 @@ async def home():
         "index.html"
         )
     
-@app.route("/s3/upload/<filename>", methods=['POST'])
+@app.route("/s3/upload", methods=['POST'])
 async def upload_route(filename: str):
-    data = request.data
+    file = await request.files.get('file')
+    data = await file.read()
     file_obj = BytesIO(data)
-    file_obj.name = filename
+    file_obj.name = file.name
     return dict(
         status='OK', 
         result=s3.upload(file_obj, filename)
