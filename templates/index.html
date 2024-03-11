@@ -7,32 +7,11 @@
     <div class="popup">
         <form target="hidden" action="/s3/upload" method="POST" enctype="multipart/form-data" id="upload-form">
             <input type="file" name="file" id="file">
-            <input type="submit" value="Upload" >
+            <button onclick="submitForm()">Submit</button>
         </form>
-        <iframe name="hidden" style="display: none;"></iframe>
         <button onclick="closePopup()">Close</button>
     </div>
 </template>
-
-<template id="list-tpl">
-    <section>
-        <ol id="order-list">
-        </ol>
-    </section>
-</template>
-
-<template id="item-tpl">
-    <li id="list-item">
-        <a id="item-link">
-        </a>
-    </li>
-</template>
-
-<template id="popup-tpl">
-    <div id="popup-item">
-    </div>
-</template>
-
 {% endblock %}
 
 {% block content %}
