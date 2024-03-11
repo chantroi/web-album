@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python -m daphne -b $(IP:-::) -p $(PORT:-8080) -w 4 main:app
+python -m daphne -b 0.0.0.0 -p 6868 main:app
