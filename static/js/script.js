@@ -55,6 +55,10 @@ function handleClick(event) {
     document.body.appendChild(template);
 }
 
+function submitForm(event) {
+    this.parentNode.submit();
+}
+
 function closePopup(event) {
     this.parentNode.remove();
 }
