@@ -1,9 +1,19 @@
 from quart import Quart, request, render_template, send_file
 from res import S3
 from io import BytesIO
+import os
 
 app = Quart(__name__)
 s3 = S3()
+
+def js():
+    scripts = list()
+    for jsf in os.listdir('static/js'):
+        if jsf != "script.js":
+            with open(f"static/js/{jsf}", 'r') as f:
+                scripts.append(f.read())
+    return "\n".join(scripts)
+                
 
 @app.route("/")
 async def home():
