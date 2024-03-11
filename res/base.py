@@ -3,7 +3,7 @@ import os
 from botocore.exceptions import NoCredentialsError
 
 
-class S3Manager:
+class S3:
     def __init__(self):
         access_key = os.getenv('ACCESS_KEY')
         secret_key = os.getenv('SECRET_KEY')
