@@ -1,7 +1,7 @@
 const listTpl = document.getElementById('list-tpl').content;
 const itemTpl = document.getElementById('item-tpl').content;
-const video = document.getElementById('video-tpl').content;
 const popupItem = document.getElementById('popup-tpl').content;
+const itemLink = document.getElementById('item-link');
 
 function getFiles() {
     const This = document.getElementById('file-list');
@@ -13,7 +13,7 @@ function getFiles() {
             return response.json();
         })
         .then(data => {
-            data.result.forEarch(item => {
+            data.result.forEach(item => {
                 const itemTag = itemTpl.cloneNode(true);
                 const link = itemTag.querySelector('a');
                 link.textContent = item;
@@ -21,4 +21,31 @@ function getFiles() {
                 This.appendChild(itemTag)
             })
         })
+}
+
+function onPlay(event) {
+    event.preventDefault;
+    const name = this.href;
+    const popup = popupItem.cloneNode(true).getElementById('popup-item');
+    const imageExt = ['.jpeg', '.png', '.jpg'];
+    let playLink;
+    fetch(`/s3/get?q=${name}`)
+      .then(response => response.json())
+      .then(data => {
+          playLink = data.result;
+      })
+    
+    if (name.endsWith('.mp4')) {
+        const video = `<video href="${playLink}" controls></video>`;
+        popup.appendChild(video);
+    }
+    if (imageExt.some(ext => name.endsWith(ext))) {
+        const image = `<image src="${playLink}"></image>`;
+        popup.appendChild(image);
+    }
+   if (name.endsWith('.mp3')) {
+       const audio = `<audio src="${playLink}" controls></audio>`;
+       popup.appendChild(audio);
+   }
+   document.body.appendChild(popup);
 }
