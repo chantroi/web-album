@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python -m daphne -b 0.0.0.0 -p 6868 main:app
+python -m uvicorn main:app --host 0.0.0.0 --port 6868 --reload
