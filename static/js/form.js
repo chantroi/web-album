@@ -9,4 +9,10 @@ function closePopup(event) {
     document.getElementById('popup').remove();
 }
 
+function formSubmit(event) {
+    event.preventDefault();
+    const form = document.getElementById('upload-form');
+    form.submit();
+}
+
 uploadButton.addEventListener('click', handleClick);
