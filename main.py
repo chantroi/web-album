@@ -14,14 +14,13 @@ async def home():
     
 @app.route("/s3/upload", methods=['POST'])
 async def upload_route():
-    file = await request.files()
-    file = await file.get('file')
-    data = await file.read()
+    file = (await request.files).get('file')
+    data = file.read()
     file_obj = BytesIO(data)
-    file_obj.name = file.name
+    file_obj.name = file.filename
     return dict(
         status='OK', 
-        result=s3.upload(file_obj, file.name)
+        result=s3.upload(file_obj, file.filename)
         )
     
 @app.route("/s3/download")
@@ -60,3 +59,5 @@ async def get_link_route():
         status='OK', 
         result=s3.get_link(query)
         )
+
+app.run(debug=True, host='0.0.0.0', port=8080)

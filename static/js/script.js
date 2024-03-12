@@ -1,4 +1,4 @@
-const uploadButton = document.querySelector('#upload-btn');
+const uploadButton = document.document.getElementById('upload-btn');
 const popupForm = document.getElementById('popup-form');
 
 function getFiles() {
@@ -52,15 +52,15 @@ function onPlay(event) {
 
 function submitForm(event) {
     event.preventDefault();
-    this.parentNode.submit();
+    event.target.parentNode.submit();
 }
 
-function handleClick(event) {
-    popupForm.style.display = "";
+function openForm() {
+  popupForm.style.display = "block";
 }
 
-function closePopup(event) {
-    popupForm.style.display = "none";
+function closeForm() {
+  popupForm.style.display = "none";
 }
 
 uploadButton.addEventListener('click', handleClick);
