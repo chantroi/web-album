@@ -1,25 +1,5 @@
-const uploadButton = document.document.getElementById('upload-btn');
+const uploadButton = document.querySelector('#upload-btn');
 const popupForm = document.getElementById('popup-form');
-
-function getFiles() {
-    fetch('/s3/list')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Fetch Failed!');
-            }
-            return response.json();
-        })
-        .then(data => {
-            data.result.forEach(item => {
-                const itemTag = ```
-                <div id="list-item">
-                  <a id="item-link" href="${item}">${item}</a>
-                </div>
-                ```;
-                This.insertAdjacentHTML('beforeend', itemTag);
-            });
-        });
-}
 
 function onPlay(event) {
     event.preventDefault;
@@ -52,15 +32,15 @@ function onPlay(event) {
 
 function submitForm(event) {
     event.preventDefault();
-    event.target.parentNode.submit();
+    this.parentNode.submit();
 }
 
-function openForm() {
-  popupForm.style.display = "block";
+function handleClick(event) {
+    popupForm.style.display = "";
 }
 
-function closeForm() {
-  popupForm.style.display = "none";
+function closePopup(event) {
+    popupForm.style.display = "none";
 }
 
 uploadButton.addEventListener('click', handleClick);
