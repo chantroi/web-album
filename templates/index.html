@@ -26,7 +26,7 @@
     <ol>
         {% for file in all_files %}
         <li>
-            <a href="{{ file }}" onclick="onPlay()">{{ file }}</a>
+            <a href="{{ file }}" onclick="onPlay(event)">{{ file }}</a>
         </li>
         {% endfor %}
     </ol>
