@@ -1,9 +1,8 @@
 const uploadButton = document.querySelector('#upload-btn');
 const popupForm = document.getElementById('popup-form');
 
-function onPlay(event) {
-    event.preventDefault;
-    const name = this.href;
+function onPlay(ele) {
+    const name = ele.textContent;
     const imageExt = ['.jpeg', '.png', '.jpg'];
     let playLink;
     let item;
