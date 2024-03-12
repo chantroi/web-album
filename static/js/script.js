@@ -1,4 +1,5 @@
 const uploadButton = document.querySelector('#upload-btn');
+const popupForm = document.getElementById('popup-form');
 
 function getFiles() {
     fetch('/s3/list')
@@ -49,17 +50,17 @@ function onPlay(event) {
    document.body.appendChild(popup);
 }
 
-function handleClick(event) {
-    const template = document.getElementById('upload-tpl').content.cloneNode(true);
-    document.body.appendChild(template);
-}
-
 function submitForm(event) {
+    event.preventDefault();
     this.parentNode.submit();
 }
 
+function handleClick(event) {
+    popupForm.style.display = "";
+}
+
 function closePopup(event) {
-    this.parentNode.remove();
+    popupForm.style.display = "none";
 }
 
 uploadButton.addEventListener('click', handleClick);
