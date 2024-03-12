@@ -10,19 +10,26 @@
     </div>
 </nav>
 
-<div id="popup-form" class="form-popup">
-    <form action="/s3/upload" method="POST" enctype="multipart/form-data" id="upload-form" class="form-container">
-        <input type="file" name="file" id="file" class="btn" required>
-        <button onclick="submitForm(event)" class="btn">Submit</button>
+<div id="popup-form" style="display: none;">
+    <form action="/s3/upload" method="POST" enctype="multipart/form-data" id="upload-form">
+        <input type="file" name="file" id="file">
+        <button onclick="submitForm()">Submit</button>
     </form>
-    <button onclick="closeForm()" class="btn cancel">Close</button>
+    <button onclick="closePopup()">Close</button>
 </div>
 
-<button id="upload-btn" class="btn btn-primary" onclick="openForm()">
+<button id="upload-btn">
     Tải lên
 </button>
 
-<div id="file-list" onload="getFiles()">
+<div id="file-list">
+    <ol>
+        {% for file in all_files %}
+        <li>
+            <a href="{{ file }}" onclick="onPlay()">{{ file }}</a>
+        </li>
+        {% endfor %}
+    </ol>
 </div>
 
 {% endblock %}
