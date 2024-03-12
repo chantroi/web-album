@@ -10,13 +10,13 @@
     </div>
 </nav>
 
-    <div class="popup" style="display: none;">
-        <form target="hidden" action="/s3/upload" method="POST" enctype="multipart/form-data" id="upload-form">
-            <input type="file" name="file" id="file">
-            <button onclick="submitForm()">Submit</button>
-        </form>
-        <button onclick="closePopup()">Close</button>
-    </div>
+<div class="popup" style="display: none;">
+    <form target="hidden" action="/s3/upload" method="POST" enctype="multipart/form-data" id="upload-form">
+        <input type="file" name="file" id="file">
+        <button onclick="submitForm()">Submit</button>
+    </form>
+    <button onclick="closePopup()">Close</button>
+</div>
 
 <button id="upload-btn">
     Tải lên
